@@ -124,10 +124,14 @@ function renderProducts() {
     card.className = "product-card";
 
     const image = document.createElement("img");
-    image.src = product.image;
-    image.alt = product.title;
-    image.loading = "lazy";
 
+image.src = product.image;
+image.alt = product.title;
+image.loading = "lazy";
+image.decoding = "async";
+image.width = 200;
+image.height = 200;
+image.style.objectFit = "contain";
     const title = document.createElement("h2");
     title.textContent = product.title;
 
