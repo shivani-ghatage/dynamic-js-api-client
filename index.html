@@ -4,24 +4,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Explorer</title>
+  <title>Product Explorer | Capstone Store</title>
   <link rel="stylesheet" href="style.css">
   <script type="module" src="app.js"></script>
 </head>
 <body>
   <header>
     <h1>Product Explorer</h1>
-    <p>Explore products from a live REST API</p>
+    <p>Your interactive e-commerce capstone project</p>
   </header>
 
   <main>
-    <section class="toolbar">
-      <input
-        type="search"
-        id="searchInput"
-        placeholder="Search products..."
-        aria-label="Search products"
-      >
+    <section class="account-section">
+      <h2>Demo Account</h2>
+      <p>Sign in to access product management features.</p>
+      <label for="loginName">Your name</label>
+      <input id="loginName" type="text" placeholder="Enter your name">
+      <button id="loginButton" type="button">Demo Login</button>
+      <button id="logoutButton" type="button" hidden>Logout</button>
+      <p id="loginStatus" role="status" aria-live="polite">Not signed in</p>
+    </section>
+
+    <section id="adminPanel" hidden>
+      <h2>Product Management</h2>
+      <form id="productForm">
+        <label for="productTitle">Product name</label>
+        <input id="productTitle" type="text" required maxlength="100">
+
+        <label for="productPrice">Price</label>
+        <input id="productPrice" type="number" min="0.01" step="0.01" required>
+
+        <label for="productCategory">Category</label>
+        <input id="productCategory" type="text" required maxlength="60">
+
+        <label for="productImage">Image URL (optional)</label>
+        <input id="productImage" type="url" placeholder="https://example.com/image.jpg">
+
+        <button id="saveProductButton" type="submit">Add Product</button>
+        <button id="cancelEditButton" type="button" hidden>Cancel Edit</button>
+      </form>
+    </section>
+
+    <section class="toolbar" aria-label="Product filters">
+      <input type="search" id="searchInput"
+        placeholder="Search products..." aria-label="Search products">
 
       <select id="categoryFilter" aria-label="Filter by category">
         <option value="all">All categories</option>
@@ -40,12 +66,12 @@
     </p>
 
     <p id="cartCount">Cart items: 0</p>
-
-    <section id="productGrid" class="product-grid"></section>
+    <section id="productGrid" class="product-grid"
+      aria-label="Products"></section>
   </main>
 
   <footer>
-    <p>Dynamic JavaScript API Client - Internship Project</p>
+    <p>Product Explorer — Full Stack Web Development Capstone</p>
   </footer>
 </body>
 </html>
